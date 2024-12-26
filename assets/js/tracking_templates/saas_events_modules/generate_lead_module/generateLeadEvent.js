@@ -1,52 +1,52 @@
 let dataLayerGenerateLeadEvent = `
     window.dataLayer = window.dataLayer || [];
-    <br>
+    
     window.dataLayer.push({
-        <br>
-        <span class="indent">'event': 'generate_lead'</span>,
-        <br>
-        <span class="indent">'currency': 'USD'</span>,
-        <br>
-        <span class="indent">'value': 22</span>,
-        <br>
-        <span class="indent">'campaign': 'Paid Search Lead Gen'</span>
-        <br>
+        
+        'event': 'generate_lead',
+        
+        'currency': 'USD',
+        
+        'value': 22,
+        
+        'campaign': 'Paid Search Lead Gen'
+        
     });`;
 
 let gtagGenerateLeadEvent = `
     gtag('event', 'generate_lead', {
-        <br>
-        <span class="indent">'event': 'generate_lead'</span>,
-        <br>
-        <span class="indent">'currency': 'USD'</span>,
-        <br>
-        <span class="indent">'value': 22</span>,
-        <br>
-        <span class="indent">'campaign': 'Paid Search Lead Gen'</span>
-        <br>
+        
+        'event': 'generate_lead',
+        
+        'currency': 'USD',
+        
+        'value': 22,
+        
+        'campaign': 'Paid Search Lead Gen'
+        
     });`;
 
 let apiGenerateLeadEvent = `
 'const measurement_id' = 'G-XXXXXXXXXX';
-<br>
+
 'const api_secret' = 'secret_value';
-<br>
-fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {<br>
-  method: "POST", <br>
-  body: JSON.stringify({ <br>
-    client_id: 'XXXXXXXXXX.YYYYYYYYYY', <br>
-    events: [{ <br>
-      name: 'generate_lead', <br>
-      params: { <br>
-        <span class="indent">'currency': 'USD'</span>,
-        <br>
-        <span class="indent">'value': 22</span>,
-        <br>
-        <span class="indent">'campaign': 'Paid Search Lead Gen'</span>
-        <br>
-      } <br>
-    }] <br>
-  }) <br>
+
+fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {
+  method: "POST", 
+  body: JSON.stringify({ 
+    client_id: 'XXXXXXXXXX.YYYYYYYYYY', 
+    events: [{ 
+      name: 'generate_lead', 
+      params: { 
+        'currency': 'USD',
+        
+        'value': 22,
+        
+        'campaign': 'Paid Search Lead Gen'
+        
+      } 
+    }] 
+  }) 
 });`;
 
-export {dataLayerGenerateLeadEvent, gtagGenerateLeadEvent, apiGenerateLeadEvent};
+export { dataLayerGenerateLeadEvent, gtagGenerateLeadEvent, apiGenerateLeadEvent };

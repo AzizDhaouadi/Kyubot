@@ -44,10 +44,6 @@ let customEventParameterRow = `
 </div>
 `
 
-window.onload = () => {
-  codeContainer.innerHTML = placeholderSampleCode
-}
-
 let dropDownElement = document.getElementById("event_name")
 
 let selectedEventType = "all_properties"

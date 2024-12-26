@@ -1,51 +1,51 @@
 let dataLayerTutorialCompleteEvent = `
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        <br>
-        <span class="indent">'event': 'tutorial_complete'</span>,
-        <br>
-        <span class="indent">'tutorial_id': 'tut_001'</span>,
-        <br>
-        <span class="indent">'tutorial_name': 'how_to_use_our_tool'</span>
-        <br>
+        
+        'event': 'tutorial_complete',
+        
+        'tutorial_id': 'tut_001',
+        
+        'tutorial_name': 'how_to_use_our_tool'
+        
       });`
 
 let gtagTutorialCompleteEvent = `
     gtag('event', 'tutorial_complete', {
-        <br>
-        <span class="indent">'tutorial_id': 'tut_001'</span>,
-        <br>
-        <span class="indent">'tutorial_name': 'how_to_use_our_tool'</span>
-        <br>
+        
+        'tutorial_id': 'tut_001',
+        
+        'tutorial_name': 'how_to_use_our_tool'
+        
     });`
 
 let apiTutorialCompleteEvent = `
 'const measurement_id' = 'G-XXXXXXXXXX';
-<br>
+
 'const api_secret' = 'XXXXXXXXXXXXXXX';
-<br>
+
 fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {
-  <br>
+  
   method: "POST",
-  <br>
+  
   body: JSON.stringify({
-    <br>
+    
     client_id: 'XXXXXXXXXX.YYYYYYYYYY',
-    <br>
+    
     events: [{
-      <br>
-      <span class="indent">name: 'tutorial_complete'</span>,
-      <br>
-      <span class="indent">params: {
-        <br>
-        <span class="indent">'tutorial_id': 'tut_001'</span>,
-        <br>
-        <span class="indent">'tutorial_name': 'how_to_use_our_tool'</span>
-        <br>
+      
+      name: 'tutorial_complete',
+      
+      params: {
+        
+        'tutorial_id': 'tut_001',
+        
+        'tutorial_name': 'how_to_use_our_tool'
+        
       }
-      <br>
+      
     }]
-    <br>  
+      
 });`
 
-export {dataLayerTutorialCompleteEvent, gtagTutorialCompleteEvent, apiTutorialCompleteEvent};
+export { dataLayerTutorialCompleteEvent, gtagTutorialCompleteEvent, apiTutorialCompleteEvent };

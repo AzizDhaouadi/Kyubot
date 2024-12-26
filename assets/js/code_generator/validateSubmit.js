@@ -64,7 +64,21 @@ import * as ecommerceViewItemListEvents from "../tracking_templates/ecommerce_ev
 
 const codeGeneratorForm = document.getElementById("codeGeneratorForm");
 
-let codeContainerSection = document.getElementById("codeSection");
+
+let codeContainerSection = document.getElementById("code-editor");
+
+const editor = CodeMirror.fromTextArea(codeContainerSection, {
+    mode: "javascript",
+    theme: "eclipse",
+    lineNumbers: true,
+    lineWrapping: true,
+    matchBrackets: true,
+    autoCloseBrackets: true,
+    tabSize: 2,
+    indentWithTabs: false
+});
+
+editor.setValue("// Welcome to our Google Analytics 4 Tracking Code Generator \n\nfunction generateEventTrackingCode(trackingMethod, eventToTrack) {\n  return `Pick the ${eventToTrack} and the ${trackingMethod} and we'll do the rest!`;\n}");
 
 let chosentEventType;
 let chosenEventName;
@@ -73,24 +87,6 @@ let chosenTrackingMedium;
 let addedCustomEventName;
 let addedEventParameterNames = [];
 let addedEventParameterValues = [];
-
-const typeSampleCode = (sampleCodeContainer, sampleCode) => {
-    const generateButton = document.querySelector('[type="submit"]');
-
-    const eventSampleCode = {
-        strings: [sampleCode],
-        typeSpeed: 5,
-        loop: false,
-        showCursor: false,
-        onBegin: () => {
-            generateButton.setAttribute('disabled', '');
-        },
-        onComplete: () => {
-            generateButton.removeAttribute('disabled');
-        }
-    }
-    const eventSampleCodeTyped = new Typed(sampleCodeContainer, eventSampleCode);
-}
 
 codeGeneratorForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -106,16 +102,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "login":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, loginEvents.dataLayerLoginEvent);
+                            editor.setValue(loginEvents.dataLayerLoginEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, loginEvents.gtagLoginEvent);
+                            editor.setValue(loginEvents.gtagLoginEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, loginEvents.apiLoginEvent);
+                            editor.setValue(loginEvents.apiLoginEvent);
                             break
                     }
 
@@ -124,16 +117,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "purchase":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, purchaseEvents.dataLayerPurchaseEvent);
+                            editor.setValue(purchaseEvents.dataLayerPurchaseEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, purchaseEvents.gtagPurchaseEvent);
+                            editor.setValue(purchaseEvents.gtagPurchaseEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, purchaseEvents.apiPurchaseEvent);
+                            editor.setValue(purchaseEvents.apiPurchaseEvent);
                             break
                     }
                     break
@@ -141,16 +131,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "search":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SeachEvents.dataLayerSearchEvent);
+                            editor.setValue(SeachEvents.dataLayerSearchEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SeachEvents.gtagSearchEvent);
+                            editor.setValue(SeachEvents.gtagSearchEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SeachEvents.apiSearchEvent);
+                            editor.setValue(SeachEvents.apiSearchEvent);
                             break
                     }
                     break
@@ -158,16 +145,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "select_content":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SelectContentEvents.dataLayerSelectContentEvent);
+                            editor.setValue(SelectContentEvents.dataLayerSelectContentEvent);
                             break;
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SelectContentEvents.gtagSelectContentEvent);
+                            editor.setValue(SelectContentEvents.gtagSelectContentEvent);
                             break;
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SelectContentEvents.apiSelectContentEvent);
+                            editor.setValue(SelectContentEvents.apiSelectContentEvent);
                             break;
                     }
                     break;
@@ -175,16 +159,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "share":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ShareEvents.dataLayerShareEvent);
+                            editor.setValue(ShareEvents.dataLayerShareEvent);
                             break;
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ShareEvents.gtagShareEvent);
+                            editor.setValue(ShareEvents.gtagShareEvent);
                             break;
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ShareEvents.apiShareEvent);
+                            editor.setValue(ShareEvents.apiShareEvent);
                             break;
                     }
                     break
@@ -192,16 +173,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "sign_up":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SignUpEvents.dataLayerSignUpEvent);
+                            editor.setValue(SignUpEvents.dataLayerSignUpEvent);
                             break;
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SignUpEvents.gtagSignUpEvent);
+                            editor.setValue(SignUpEvents.gtagSignUpEvent);
                             break;
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, SignUpEvents.apiSignUpEvent);
+                            editor.setValue(SignUpEvents.apiSignUpEvent);
                             break;
                     }
                     break;
@@ -213,47 +191,38 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "tutorial_begin":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTutorialBeginEvents.dataLayerTutorialBeginEvent);
+                            editor.setValue(saasTutorialBeginEvents.dataLayerTutorialBeginEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTutorialBeginEvents.gtagTutorialBeginEvent);
+                            editor.setValue(saasTutorialBeginEvents.gtagTutorialBeginEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTutorialBeginEvents.apiTutorialBeginEvent);
+                            editor.setValue(saasTutorialBeginEvents.apiTutorialBeginEvent);
                     }
                     break
 
                 case "tutorial_complete":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTutorialCompleteEvents.dataLayerTutorialCompleteEvent);
+                            editor.setValue(saasTutorialCompleteEvents.dataLayerTutorialCompleteEvent);
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTutorialCompleteEvents.dataLayerTutorialCompleteEvent);
+                            editor.setValue(saasTutorialCompleteEvents.dataLayerTutorialCompleteEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTutorialCompleteEvents.dataLayerTutorialCompleteEvent);
+                            editor.setValue(saasTutorialCompleteEvents.dataLayerTutorialCompleteEvent);
                     }
                     break
 
                 case "add_payment_info":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasAddPaymentInfoEvents.dataLayerAddPaymentInfoEvent);
+                            editor.setValue(saasAddPaymentInfoEvents.dataLayerAddPaymentInfoEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasAddPaymentInfoEvents.gtagAddPaymentInfoEvent);
+                            editor.setValue(saasAddPaymentInfoEvents.gtagAddPaymentInfoEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasAddPaymentInfoEvents.apiAddPaymentInfoEvent);
+                            editor.setValue(saasAddPaymentInfoEvents.apiAddPaymentInfoEvent);
                             break
                     }
                     break
@@ -261,16 +230,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "begin_checkout":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasBeginCheckoutEvents.dataLayerBeginCheckoutEvent);
+                            editor.setValue(saasBeginCheckoutEvents.dataLayerBeginCheckoutEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasBeginCheckoutEvents.gtagBeginCheckoutEvent);
+                            editor.setValue(saasBeginCheckoutEvents.gtagBeginCheckoutEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasBeginCheckoutEvents.apiBeginCheckoutEvent);
+                            editor.setValue(saasBeginCheckoutEvents.apiBeginCheckoutEvent);
                             break
                     }
                     break
@@ -278,16 +244,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "generate_lead":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasGenerateLeadEvents.dataLayerGenerateLeadEvent);
+                            editor.setValue(saasGenerateLeadEvents.dataLayerGenerateLeadEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasGenerateLeadEvents.gtagGenerateLeadEvent);
+                            editor.setValue(saasGenerateLeadEvents.gtagGenerateLeadEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasGenerateLeadEvents.apiGenerateLeadEvent);
+                            editor.setValue(saasGenerateLeadEvents.apiGenerateLeadEvent);
                             break
                     }
                     break
@@ -295,16 +258,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "trial_start":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTrialStartEvents.dataLayerTrialStartEvent);
+                            editor.setValue(saasTrialStartEvents.dataLayerTrialStartEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTrialStartEvents.gtagTrialStartEvent);
+                            editor.setValue(saasTrialStartEvents.gtagTrialStartEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTrialStartEvents.apiTrialStartEvent);
+                            editor.setValue(saasTrialStartEvents.apiTrialStartEvent);
                             break
                     }
                     break
@@ -312,16 +272,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "trial_end":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTrialEndEvents.dataLayerTrialEndEvent);
+                            editor.setValue(saasTrialEndEvents.dataLayerTrialEndEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTrialEndEvents.gtagTrialEndEvent);
+                            editor.setValue(saasTrialEndEvents.gtagTrialEndEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasTrialEndEvents.apiTrialEndEvent);
+                            editor.setValue(saasTrialEndEvents.apiTrialEndEvent);
                             break
                     }
                     break
@@ -329,16 +286,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "add_user":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasAddUserEvents.dataLayerAddUserEvent);
+                            editor.setValue(saasAddUserEvents.dataLayerAddUserEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasAddUserEvents.gtagAddUserEvent);
+                            editor.setValue(saasAddUserEvents.gtagAddUserEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasAddUserEvents.apiAddUserEvent);
+                            editor.setValue(saasAddUserEvents.apiAddUserEvent);
                             break
                     }
                     break
@@ -346,16 +300,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "remove_user":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasRemoveUserEvents.dataLayerRemoveUserEvent);
+                            editor.setValue(saasRemoveUserEvents.dataLayerRemoveUserEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasRemoveUserEvents.gtagRemoveUserEvent);
+                            editor.setValue(saasRemoveUserEvents.gtagRemoveUserEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasRemoveUserEvents.apiRemoveUserEvent);
+                            editor.setValue(saasRemoveUserEvents.apiRemoveUserEvent);
                             break
                     }
                     break
@@ -363,15 +314,12 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "create_account":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasCreateAccountEvents.dataLayerCreateAccountEvent);
+                            editor.setValue(saasCreateAccountEvents.dataLayerCreateAccountEvent);
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasCreateAccountEvents.gtagCreateAccountEvent);
+                            editor.setValue(saasCreateAccountEvents.gtagCreateAccountEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasCreateAccountEvents.apiCreateAccountEvent);
+                            editor.setValue(saasCreateAccountEvents.apiCreateAccountEvent);
                             break
                     }
                     break
@@ -379,16 +327,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "delete_account":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasDeleteAccountEvents.dataLayerDeleteAccountEvent);
+                            editor.setValue(saasDeleteAccountEvents.dataLayerDeleteAccountEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasDeleteAccountEvents.gtagDeleteAccountEvent);
+                            editor.setValue(saasDeleteAccountEvents.gtagDeleteAccountEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasDeleteAccountEvents.apiDeleteAccountEvent);
+                            editor.setValue(saasDeleteAccountEvents.apiDeleteAccountEvent);
                             break
                     }
                     break
@@ -396,16 +341,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "subscribe":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasSubscribeEvents.dataLayerSubscribeEvent);
+                            editor.setValue(saasSubscribeEvents.dataLayerSubscribeEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasSubscribeEvents.gtagSubscribeEvent);
+                            editor.setValue(saasSubscribeEvents.gtagSubscribeEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasSubscribeEvents.apiSubscribeEvent);
+                            editor.setValue(saasSubscribeEvents.apiSubscribeEvent);
                             break
                     }
                     break
@@ -413,16 +355,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "update_subscription":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasUpdateSubscriptionEvents.dataLayerUpdateSubscriptionEvent);
+                            editor.setValue(saasUpdateSubscriptionEvents.dataLayerUpdateSubscriptionEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasUpdateSubscriptionEvents.gtagUpdateSubscriptionEvent);
+                            editor.setValue(saasUpdateSubscriptionEvents.gtagUpdateSubscriptionEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasUpdateSubscriptionEvents.apiUpdateSubscriptionEvent);
+                            editor.setValue(saasUpdateSubscriptionEvents.apiUpdateSubscriptionEvent);
                             break
                     }
                     break
@@ -430,16 +369,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "cancel_subscription":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasCancelSubscriptionEvents.dataLayerCancelSubscriptionEvent);
+                            editor.setValue(saasCancelSubscriptionEvents.dataLayerCancelSubscriptionEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasCancelSubscriptionEvents.gtagCancelSubscriptionEvent);
+                            editor.setValue(saasCancelSubscriptionEvents.gtagCancelSubscriptionEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasCancelSubscriptionEvents.apiCancelSubscriptionEvent);
+                            editor.setValue(saasCancelSubscriptionEvents.apiCancelSubscriptionEvent);
                             break
                     }
                     break
@@ -447,16 +383,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "renew_subscription":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasRenewSubscriptionEvents.dataLayerRenewSubscriptionEvent);
+                            editor.setValue(saasRenewSubscriptionEvents.dataLayerRenewSubscriptionEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasRenewSubscriptionEvents.gtagRenewSubscriptionEvent);
+                            editor.setValue(saasRenewSubscriptionEvents.gtagRenewSubscriptionEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, saasRenewSubscriptionEvents.apiRenewSubscriptionEvent);
+                            editor.setValue(saasRenewSubscriptionEvents.apiRenewSubscriptionEvent);
                             break
                     }
                     break
@@ -468,16 +401,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "add_payment_info":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddPaymentInfoEvents.dataLayerAddPaymentInfoEvent);
+                            editor.setValue(ecommerceAddPaymentInfoEvents.dataLayerAddPaymentInfoEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddPaymentInfoEvents.gtagAddPaymentInfoEvent);
+                            editor.setValue(ecommerceAddPaymentInfoEvents.gtagAddPaymentInfoEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddPaymentInfoEvents.apiAddPaymentInfoEvent);
+                            editor.setValue(ecommerceAddPaymentInfoEvents.apiAddPaymentInfoEvent);
                             break
                     }
                     break
@@ -485,17 +415,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "begin_checkout":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddPaymentInfoEvents.apiAddPaymentInfoEvent);
-                            codeContainerSection.innerHTML = ecommerceBeginCheckoutEvents.dataLayerBeginCheckoutEvent
+                            editor.setValue(ecommerceBeginCheckoutEvents.dataLayerBeginCheckoutEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceBeginCheckoutEvents.gtagBeginCheckoutEvent);
+                            editor.setValue(ecommerceBeginCheckoutEvents.gtagBeginCheckoutEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceBeginCheckoutEvents.apiBeginCheckoutEvent);
+                            editor.setValue(ecommerceBeginCheckoutEvents.apiBeginCheckoutEvent);
                             break
                     }
                     break
@@ -503,16 +429,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "view_list_item":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewItemListEvents.dataLayerViewItemListEvent);
+                            editor.setValue(ecommerceViewItemListEvents.dataLayerViewItemListEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewItemListEvents.gtagViewItemListEvent);
+                            editor.setValue(ecommerceViewItemListEvents.gtagViewItemListEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewItemListEvents.apiViewItemListEvent);
+                            editor.setValue(ecommerceViewItemListEvents.apiViewItemListEvent);
                             break
                     }
                     break
@@ -520,16 +443,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "add_to_cart":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddToCartEvents.dataLayerAddToCartEvent);
+                            editor.setValue(ecommerceAddToCartEvents.dataLayerAddToCartEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddToCartEvents.gtagAddToCartEvent);
+                            editor.setValue(ecommerceAddToCartEvents.gtagAddToCartEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddToCartEvents.apiAddToCartEvent);
+                            editor.setValue(ecommerceAddToCartEvents.apiAddToCartEvent);
                             break
                     }
                     break
@@ -537,16 +457,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "purchase":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommercePurhcaseEvents.dataLayerPurchaseEvent);
+                            editor.setValue(ecommercePurhcaseEvents.dataLayerPurchaseEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommercePurhcaseEvents.gtagPurchaseEvent);
+                            editor.setValue(ecommercePurhcaseEvents.gtagPurchaseEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommercePurhcaseEvents.apiPurchaseEvent);
+                            editor.setValue(ecommercePurhcaseEvents.apiPurchaseEvent);
                             break
                     }
                     break
@@ -554,16 +471,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "select_item":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceSelectItemEvents.dataLayerSelectItemEvent);
+                            editor.setValue(ecommerceSelectItemEvents.dataLayerSelectItemEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceSelectItemEvents.gtagSelectItemEvent);
+                            editor.setValue(ecommerceSelectItemEvents.gtagSelectItemEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceSelectItemEvents.apiSelectItemEvent);
+                            editor.setValue(ecommerceSelectItemEvents.apiSelectItemEvent);
                             break
                     }
                     break
@@ -571,16 +485,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "view_cart":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewCartEvents.dataLayerViewCartEvent);
+                            editor.setValue(ecommerceViewCartEvents.dataLayerViewCartEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewCartEvents.gtagViewCartEvent);
+                            editor.setValue(ecommerceViewCartEvents.gtagViewCartEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewCartEvents.apiViewCartEvent);
+                            editor.setValue(ecommerceViewCartEvents.apiViewCartEvent);
                             break
                     }
                     break
@@ -588,16 +499,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "remove_from_cart":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceRemoveFromCartEvents.dataLayerRemoveFromCartEvent);
+                            editor.setValue(ecommerceRemoveFromCartEvents.dataLayerRemoveFromCartEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceRemoveFromCartEvents.gtagRemoveFromCartEvent);
+                            editor.setValue(ecommerceRemoveFromCartEvents.gtagRemoveFromCartEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceRemoveFromCartEvents.apiRemoveFromCartEvent);
+                            editor.setValue(ecommerceRemoveFromCartEvents.apiRemoveFromCartEvent);
                             break
                     }
                     break
@@ -605,16 +513,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "add_shipping_info":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddShippingInfoEvents.dataLayerAddShippingInfoEvent);
+                            editor.setValue(ecommerceAddShippingInfoEvents.dataLayerAddShippingInfoEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddShippingInfoEvents.gtagAddShippingInfoEvent);
+                            editor.setValue(ecommerceAddShippingInfoEvents.gtagAddShippingInfoEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceAddShippingInfoEvents.apiAddShippingInfoEvent);
+                            editor.setValue(ecommerceAddShippingInfoEvents.apiAddShippingInfoEvent);
                             break
                     }
                     break
@@ -622,16 +527,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "refund":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceRefundEvents.dataLayerRefundEvent);
+                            editor.setValue(ecommerceRefundEvents.dataLayerRefundEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceRefundEvents.gtagRefundEvent);
+                            editor.setValue(ecommerceRefundEvents.gtagRefundEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceRefundEvents.apiRefundEvent);
+                            editor.setValue(ecommerceRefundEvents.apiRefundEvent);
                             break
                     }
                     break
@@ -639,16 +541,13 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                 case "view_item":
                     switch (chosenTrackingMedium) {
                         case "dataLayer":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewItemEvents.dataLayerViewItemEvent);
+                            editor(ecommerceViewItemEvents.dataLayerViewItemEvent);
                             break
                         case "gtag":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewItemEvents.gtagViewItemEvent);
+                            editor.setValue(ecommerceViewItemEvents.gtagViewItemEvent);
                             break
                         case "API":
-                            codeContainerSection.innerHTML = '';
-                            typeSampleCode(codeContainerSection, ecommerceViewItemEvents.apiViewItemEvent);
+                            editor.setValue(ecommerceViewItemEvents.apiViewItemEvent);
                             break
                     }
                     break
@@ -671,58 +570,50 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                     if (addedEventParameterNames.length == 1) {
                         for (let addedEventParameterName = 0; addedEventParameterName < addedEventParameterNames.length; addedEventParameterName++) {
                             for (let addedEventParameterValue = 0; addedEventParameterValue < addedEventParameterValues.length; addedEventParameterValue++) {
-                                addSectionArray.push(`<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterValue]}'</span>
-                                <br>
+                                addSectionArray.push(`'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterValue]}'
                                 `)
                             }
                         }
                         addSection = addSectionArray.join("")
                     } else {
                         for (let addedEventParameterName = 0; addedEventParameterName < addedEventParameterNames.length; addedEventParameterName++) {
-                            addSectionArray.push(`<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}',</span>
-                            <br>
+                            addSectionArray.push(`'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}',
                             `)
 
                             if (addedEventParameterName == addedEventParameterNames.length - 1) {
                                 addSectionArray[
                                     addSectionArray.length - 1
-                                ] = `<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}'</span>
-                                <br>
+                                ] = `'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}'
+                                
                                 `
                             }
                         }
                         addSection = addSectionArray.join("")
                     }
 
-                    let generatedCodeZeroParameter = `
-                    window.dataLayer = window.dataLayer || [];
-                    <br>
-                    window.dataLayer.push({
-                        <br>
-                        <span class="indent">'event': '${addedCustomEventName}'</span>
-                    });
+                    let generatedCodeZeroParameter =
+                        `
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+    'event': '${addedCustomEventName}'
+});
                     `
 
                     let generatedCodeOnePlusParameter = `
-                    window.dataLayer = window.dataLayer || [];
-                    <br>
-                    window.dataLayer.push({
-                        <br>
-                        <span class="indent">'event': '${addedCustomEventName}'</span>,
-                        <br>
-                        ${addSection}
-                    });
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+    'event': '${addedCustomEventName}',
+    ${addSection}
+});
                     `
 
                     if (codeGeneratorForm.querySelectorAll(".added.name").length == 0) {
-                        codeContainerSection.innerHTML = '';
-                        typeSampleCode(codeContainerSection, generatedCodeZeroParameter);
+                        editor.setValue(generatedCodeZeroParameter);
                         addedCustomEventName = ""
                         addedEventParameterNames = []
                         addedEventParameterValues = []
                     } else {
-                        codeContainerSection.innerHTML = '';
-                        typeSampleCode(codeContainerSection, generatedCodeOnePlusParameter);
+                        editor.setValue(generatedCodeOnePlusParameter);
                         addedCustomEventName = ""
                         addedEventParameterNames = []
                         addedEventParameterValues = []
@@ -744,23 +635,23 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                     if (addedEventParameterNames.length == 1) {
                         for (let addedEventParameterName = 0; addedEventParameterName < addedEventParameterNames.length; addedEventParameterName++) {
                             for (let addedEventParameterValue = 0; addedEventParameterValue < addedEventParameterValues.length; addedEventParameterValue++) {
-                                addSectionArrayGtag.push(`<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterValue]}'</span>
-                                <br>
+                                addSectionArrayGtag.push(`'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterValue]}'
+                                
                                 `)
                             }
                         }
                         addSectionGtag = addSectionArrayGtag.join("")
                     } else {
                         for (let addedEventParameterName = 0; addedEventParameterName < addedEventParameterNames.length; addedEventParameterName++) {
-                            addSectionArrayGtag.push(`<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}',</span>
-                            <br>
+                            addSectionArrayGtag.push(`'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}',
+                            
                             `)
 
                             if (addedEventParameterName == addedEventParameterNames.length - 1) {
                                 addSectionArrayGtag[
                                     addSectionArrayGtag.length - 1
-                                ] = `<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}'</span>
-                                <br>
+                                ] = `'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}'
+                                
                                 `
                             }
                         }
@@ -768,28 +659,23 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                     }
 
                     let generatedCodeZeroParameterGtag = `
-                    gtag('event', '${addedCustomEventName}'
-                    );
+gtag('event', '${addedCustomEventName}');
                     `
 
                     let generatedCodeOnePlusParameterGtag = `
-                    gtag('event', '${addedCustomEventName}', {
-                        <br>
-                        ${addSectionGtag}
-                      }
-                      <br>
-                    );
+gtag('event', '${addedCustomEventName}', {
+    ${addSectionGtag}
+    }
+);
                     `
 
                     if (codeGeneratorForm.querySelectorAll(".added.name").length == 0) {
-                        codeContainerSection.innerHTML = '';
-                        typeSampleCode(codeContainerSection, generatedCodeZeroParameterGtag);
+                        editor.setValue(generatedCodeZeroParameterGtag)
                         addedCustomEventName = ""
                         addedEventParameterNames = []
                         addedEventParameterValues = []
                     } else {
-                        codeContainerSection.innerHTML = '';
-                        typeSampleCode(codeContainerSection, generatedCodeOnePlusParameterGtag);
+                        editor.setValue(generatedCodeOnePlusParameterGtag);
                         addedCustomEventName = ""
                         addedEventParameterNames = []
                         addedEventParameterValues = []
@@ -811,23 +697,23 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                     if (addedEventParameterNames.length == 1) {
                         for (let addedEventParameterName = 0; addedEventParameterName < addedEventParameterNames.length; addedEventParameterName++) {
                             for (let addedEventParameterValue = 0; addedEventParameterValue < addedEventParameterValues.length; addedEventParameterValue++) {
-                                addSectionArrayApi.push(`<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterValue]}'</span>
-                                <br>
+                                addSectionArrayApi.push(`'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterValue]}'
+                                
                                 `)
                             }
                         }
                         addSectionApi = addSectionArrayApi.join("")
                     } else {
                         for (let addedEventParameterName = 0; addedEventParameterName < addedEventParameterNames.length; addedEventParameterName++) {
-                            addSectionArrayApi.push(`<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}',</span>
-                            <br>
+                            addSectionArrayApi.push(`'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}',
+                            
                             `)
 
                             if (addedEventParameterName == addedEventParameterNames.length - 1) {
                                 addSectionArrayApi[
                                     addSectionArrayApi.length - 1
-                                ] = `<span class="indent">'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}'</span>
-                                <br>
+                                ] = `'${addedEventParameterNames[addedEventParameterName]}': '${addedEventParameterValues[addedEventParameterName]}'
+                                
                                 `
                             }
                         }
@@ -835,52 +721,43 @@ codeGeneratorForm.addEventListener("submit", (event) => {
                     }
 
                     let generatedCodeZeroParameterApi = `
-                    'const measurement_id' = 'G-XXXXXXXXXX';
-                    <br>
-                    'const api_secret' = 'secret_value';
-                    <br>
-
-                    fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {<br>
-                    method: "POST", <br>
-                    body: JSON.stringify({ <br>
-                        client_id: 'XXXXXXXXXX.YYYYYYYYYY', <br>
-                        events: [{ <br>
-                        name: '${addedCustomEventName}'
-                        <br>
-                        }] <br>
-                    }) <br>
-                    });
+'const measurement_id' = 'G-XXXXXXXXXX';
+'const api_secret' = 'secret_value';
+fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {
+    method: "POST", 
+    body: JSON.stringify({ 
+        client_id: 'XXXXXXXXXX.YYYYYYYYYY', 
+        events: [{ 
+            name: '${addedCustomEventName}'            
+            }] 
+        }) 
+});
                     `
 
                     let generatedCodeOnePlusParameterApi = `
-                    'const measurement_id' = 'G-XXXXXXXXXX';
-                    <br>
-                    'const api_secret' = 'secret_value';
-                    <br>
-
-                    fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {<br>
-                    method: "POST", <br>
-                    body: JSON.stringify({ <br>
-                        client_id: 'XXXXXXXXXX.YYYYYYYYYY', <br>
-                        events: [{ <br>
-                        name: '${addedCustomEventName}', <br>
-                        params: { <br>
-                            ${addSectionApi}
-                        } <br>
-                        }] <br>
-                    }) <br>
-                    });
+'const measurement_id' = 'G-XXXXXXXXXX';
+'const api_secret' = 'secret_value';
+fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {
+    method: "POST", 
+    body: JSON.stringify({ 
+        client_id: 'XXXXXXXXXX.YYYYYYYYYY', 
+        events: [{ 
+            name: '${addedCustomEventName}', 
+                params: { 
+                    ${addSectionApi}
+                } 
+            }] 
+        }) 
+});
                     `
 
                     if (codeGeneratorForm.querySelectorAll(".added.name").length == 0) {
-                        codeContainerSection.innerHTML = '';
-                        typeSampleCode(codeContainerSection, generatedCodeZeroParameterApi);
+                        editor.setValue(generatedCodeZeroParameterApi);
                         addedCustomEventName = ""
                         addedEventParameterNames = []
                         addedEventParameterValues = []
                     } else {
-                        codeContainerSection.innerHTML = '';
-                        typeSampleCode(codeContainerSection, generatedCodeOnePlusParameterApi);
+                        editor.setValue(generatedCodeOnePlusParameterApi);
                         addedCustomEventName = ""
                         addedEventParameterNames = []
                         addedEventParameterValues = []

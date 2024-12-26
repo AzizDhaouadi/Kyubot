@@ -1,57 +1,57 @@
 let dataLayerRemoveUserEvent = `
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-        <br>
-        <span class="indent">'event': 'remove_user'</span>,
-        <br>
-        <span class="indent">'users_per_account': 3</span>,
-        <br>
-        <span class="indent">'plan_name': 'Premium'</span>,
-        <br>
-        <span class="indent">'date': '1970-01-01'</span>
-        <br>
+        
+        'event': 'remove_user',
+        
+        'users_per_account': 3,
+        
+        'plan_name': 'Premium',
+        
+        'date': '1970-01-01'
+        
       });`
 
 let gtagRemoveUserEvent = `
     gtag('event', 'remove_user', {
-        <br>
-        <span class="indent">'users_per_account': 3</span>,
-        <br>
-        <span class="indent">'plan_name': 'Premium'</span>,
-        <br>
-        <span class="indent">'date': '1970-01-01'</span>
-        <br>
+        
+        'users_per_account': 3,
+        
+        'plan_name': 'Premium',
+        
+        'date': '1970-01-01'
+        
     });`
 
 let apiRemoveUserEvent = `
 'const measurement_id' = 'G-XXXXXXXXXX';
-<br>
+
 'const api_secret' = 'XXXXXXXXXXXXXXX';
-<br>
+
 fetch(\`https://www.google-analytics.com/mp/collect?measurement_id=\${measurement_id}&api_secret=\${api_secret}\`, {
-  <br>
+  
   method: "POST",
-  <br>
+  
   body: JSON.stringify({
-    <br>
+    
     client_id: 'XXXXXXXXXX.YYYYYYYYYY',
-    <br>
+    
     events: [{
-      <br>
-      <span class="indent">name: 'remove_user'</span>,
-      <br>
-      <span class="indent">params: {
-        <br>
-        <span class="indent">'users_per_account': 3</span>,
-        <br>
-        <span class="indent">'plan_name': 'Premium'</span>,
-        <br>
-        <span class="indent">'date': '1970-01-01'</span>
-        <br>
+      
+      name: 'remove_user',
+      
+      params: {
+        
+        'users_per_account': 3,
+        
+        'plan_name': 'Premium',
+        
+        'date': '1970-01-01'
+        
       }
-      <br>
+      
     }]
-    <br>  
+      
 });`
 
-export {dataLayerRemoveUserEvent, gtagRemoveUserEvent, apiRemoveUserEvent};
+export { dataLayerRemoveUserEvent, gtagRemoveUserEvent, apiRemoveUserEvent };

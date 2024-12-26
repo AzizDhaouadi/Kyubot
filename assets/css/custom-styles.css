@@ -8,9 +8,17 @@ html {
     scroll-behavior: smooth !important;
 }
 
+body {
+  background-color: transparent !important;
+}
+
 #header-content {
-    min-height: 100vh;
+    min-height: 50vh;
     padding-top: 2.5rem;
+}
+
+.img-fluid.max-height-set {
+  max-height: 30vh;
 }
 
 .highlight {
@@ -22,7 +30,7 @@ html {
 }
 
 .highlight-yellow {
-    color: var(--bs-yellow);
+    color: var(--theme-secondary-heading-color);
 }
 
 .justify-center {
@@ -79,6 +87,74 @@ html {
     width: 100%;
     height: 100%;
   }
+
+  /* CSS override for heading colors */
+
+  h1.text-primary {
+    color: var(--theme-alternative-heading-color) !important;
+  }
+
+  h1.display-3 {
+    color: var(--theme-accent-color-vibrant-lavender);
+  }
+
+  /* CSS override for text colors */
+
+  p, a.nav-link {
+    color: var(--theme-main-text-color) !important;
+  }
+
+  /* #hero span {
+    color: 
+  } */
+
+  /* Home page custom CSS overrides */
+
+  #header-content {
+    background-color: var(--theme-primary-background) !important;
+  }
+
+  span.text-warning {
+    color: var(--theme-accent-color-vibrant-lavender) !important;
+  }
+
+  #mission-statement > h3 {
+    color: var(--theme-alternative-heading-color) !important;
+  }
+
+  h3.highlight {
+    color: var(--theme-secondary-heading-color);
+  }
+
+  h3 {
+    color: var(--theme-secondary-heading-color);
+  }
+
+  h5 { 
+    color: var(--theme-accent-color-vibrant-lavender);
+  }
+
+  span.h3 {
+    color: var(--theme-accent-color-vibrant-lavender) !important;
+  }
+
+  .btn.btn-primary {
+    background-color: var(--theme-cta-button-color);
+  }
+
+  #header-content {
+    background-color: transparent !important;
+  }
+
+  span.svg-icon {
+    color: var(--theme-accent-color-mint-green) !important
+  }
+
+  .step .active .step-title, .step .active.is-valid .step-title {
+    color: var(--theme-accent-color-mint-green);
+  }
+  
+/* End Home page CSS overrides */
 
   @media only screen and (min-width: 992px) {
     div.w-lg-75 {
