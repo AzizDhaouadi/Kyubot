@@ -118,6 +118,11 @@
         #course-curriculum ol li {
             line-height: 200%;
         }
+
+        .slides-styling {
+            font-weight: 800;
+            font-size: larger;
+        }
     </style>
 </head>
 
@@ -150,7 +155,7 @@
             <div class="overflow-hidden">
                 <div class="container">
                     <div class="row gap-2">
-                        <div class="col-md-6 order-md-2 mb-md-0 mb-7 b-shadow">
+                        <div class="col-md-6 order-md-2 mb-md-0 mb-7 b-shadow" style="max-height: max-content;">
                             <script charset="utf-8" type="text/javascript"
                                 src="//js.hsforms.net/forms/embed/v2.js"></script>
                             <script>
@@ -166,7 +171,7 @@
                             <div class="pe-md-5">
                                 <!-- Heading -->
                                 <div class="mb-7">
-                                    <span class="text-cap text-bold">Master Google Analytics 4</span>
+                                    <span class="text-cap text-bold">Master Web Analytics</span>
                                     <h1>Register for Our Exclusive Course</h1>
                                 </div>
                                 <!-- End Heading -->
@@ -240,42 +245,48 @@
             <div class="overflow-hidden" id="course-details">
                 <div class="content-space-1 container">
                     <div class="row align-items-md-center justify-center">
+                        <h2 class="h2 text-center"
+                            style="color: var(--theme-accent-color-vibrant-lavender) !important;">Get to
+                            know the course</h2>
                         <div class="col-md-6 w-100 mt-md-0 mt-5">
                             <div class="ps-md-5">
                                 <!-- Heading -->
                                 <div class="mb-7">
-                                    <span class="text-cap text-bold">How long is the course?</span>
-                                    <h2>Course Format & Timeline</h2>
                                 </div>
-                                <div id="carouselExampleIndicators" class="carousel slide border border-3 rounded"
+                                <div id="carouselExampleIndicators" class="carousel slide slides-styling"
                                     data-bs-ride="true">
                                     <div class="carousel-inner pt-5 pb-5">
                                         <div class="carousel-item active">
-                                            <div class="d-block w-50 mx-auto lh-lg text-wrap">
-                                                The course will last for 8 weeks. Each week, we will host 2 live
-                                                sessions lasting an hour each.
-                                                Each week, after the session, you will be sent the recording of the
-                                                class, your homework for the week
-                                                and you can send us any questions you have.
-                                                You can also take
-                                                advantage of our questions board if you need
-                                                help from your fellow classmates
+                                            <div class="d-block w-75 mx-auto lh-lg text-wrap">
+                                                <h3 class="h3">How long is the course?</h3>
+                                                <p>The course will last for 8 weeks. Each week, we will host 2 live
+                                                    sessions lasting an hour each.
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
-                                            <div class="d-block w-50 mx-auto lh-lg text-wrap">
-                                                The live sessions will be hosted on Zoom. Before every lesson, you will
-                                                receive a link to join the class.
-                                                If you cannot make it, you can always watch the recording and send us
-                                                any questions you have.
+                                            <div class="d-block w-75 mx-auto lh-lg text-wrap">
+                                                <h3 class="h3">Where will the course take place?</h3>
+                                                <p>The live sessions will be hosted on Zoom. Before every lesson, you
+                                                    will
+                                                    receive a link to join the class.
+                                                    If you cannot make it, you can always watch the recording and send
+                                                    us
+                                                    any questions you have.
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="carousel-item">
-                                            <div class="d-block w-50 mx-auto lh-lg text-wrap">
-                                                Lessons will include live walkthroughs of the tools mentioned above. It
-                                                will also involve hands-on practice
-                                                with weekly homework, and practice labs during the session as well as
-                                                interactive quizzes.
+                                            <div class="d-block w-75 mx-auto lh-lg text-wrap">
+                                                <h3 class="h3">What will each lesson include?</h3>
+                                                <p>
+                                                    Lessons will include live walkthroughs of the tools mentioned above.
+                                                    It
+                                                    will also involve hands-on practice
+                                                    with weekly homework, and practice labs during the session as well
+                                                    as
+                                                    interactive quizzes.
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -312,10 +323,11 @@
                                     <h2>Course Curriculum</h2>
                                 </div>
                                 <!-- End Heading -->
-                                <div class="accordion accordion-flush d-flex flex-row gap-3" id="accordionFlushExample">
-                                    <div class="accordion-item w-50 border border-0">
+                                <div class="accordion accordion-flush d-flex flex-column gap-3"
+                                    id="accordionFlushExample">
+                                    <div class="accordion-item w-100 ">
                                         <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button collapsed" type="button"
+                                            <button class="accordion-button collapsed fw-bold" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
                                                 aria-expanded="false" aria-controls="flush-collapseOne">
                                                 Google Analytics 4
@@ -445,7 +457,7 @@
                                                             aria-controls="curriculumStepSix" aria-selected="false">
                                                             <span class="step-icon step-icon-soft-secondary">6</span>
                                                             <div class="step-content">
-                                                                <h6 class="step-title">Part VI - Standard
+                                                                <h6 class="step-title">Standard
                                                                     Reports</h6>
                                                                 <ol class="step-text">
                                                                     <li>Acquisition</li>
@@ -533,9 +545,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item w-50 border border-0">
+                                    <div class="accordion-item w-100 ">
                                         <h2 class="accordion-header" id="flush-headingTwo">
-                                            <button class="accordion-button collapsed" type="button"
+                                            <button class="accordion-button collapsed fw-bold" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
                                                 aria-expanded="false" aria-controls="flush-collapseTwo">
                                                 Google Tag Manager
@@ -656,9 +668,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item w-50 border border-0">
+                                    <div class="accordion-item w-100 ">
                                         <h2 class="accordion-header" id="flush-headingThree">
-                                            <button class="accordion-button collapsed" type="button"
+                                            <button class="accordion-button collapsed fw-bold" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
                                                 aria-expanded="false" aria-controls="flush-collapseThree">
                                                 Looker Studio
@@ -741,9 +753,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="accordion-item w-50 border border-0">
+                                    <div class="accordion-item w-100 ">
                                         <h2 class="accordion-header" id="flush-headingFour">
-                                            <button class="accordion-button collapsed" type="button"
+                                            <button class="accordion-button collapsed fw-bold" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
                                                 aria-expanded="false" aria-controls="flush-collapseFour">
                                                 Next Steps
@@ -778,7 +790,7 @@
                 <use xlink:href="#bootstrap"></use>
             </svg>
         </a>
-        <span class="text-muted">© 2024 Datakyu Inc.</span>
+        <span class="text-muted">© 2025 Datakyu Inc.</span>
     </div>
 </footer>
 <!-- Google Tag Manager (noscript) -->
